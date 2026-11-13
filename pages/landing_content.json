@@ -1,0 +1,36 @@
+{
+    "hero": {
+        "title1": "Earn USDT in",
+        "title2": "Minutes.",
+        "subtitle": "Turn your free time into Tether USDT by completing microtasks, viewing PTC ads, and claiming from our instant faucet."
+    },
+    "tasks": {
+        "title": "Microtasks & Offers",
+        "subtitle": "Complete microtasks and offers from our trusted partners. Download apps, play games, or test new products to earn USDT directly to your balance. New tasks are added constantly."
+    },
+    "video": {
+        "title": "Watch & Earn Videos",
+        "subtitle": "Get paid to watch short videos. Choose a video from the feed, watch it to the end, and receive your USDT reward instantly. A fun and effortless way to grow your balance every day."
+    },
+    "ptc": {
+        "title": "PTC Ads (Paid-To-Click)",
+        "subtitle": "The easiest way to start earning. Simply visit sponsored websites, wait for the timer to finish, and get paid instantly. Discover new crypto projects, faucets, and useful websites while growing your own wallet."
+    },
+    "shortlinks": {
+        "title": "Shortlinks",
+        "subtitle": "Boost your earnings by solving shortlinks. Navigate through partner links, complete captchas, and reach the destination URL to claim higher rewards. A great way to increase your daily earning potential."
+    },
+    "wheel": {
+        "title": "Wheel of Fortune",
+        "subtitle": "Spin the wheel and test your luck! Use your collected energy to spin the wheel for a chance to win massive USDT rewards. The higher the energy, the more spins you get."
+    },
+    "why": {
+        "title": "Why Tether USDT?",
+        "subtitle": "Tether (USDT) is the world's largest stablecoin, 1:1 pegged to the US dollar. Instant transactions, minimal fees, and wide support across exchanges and wallets — perfect for GPT earnings payouts.",
+        "btn_text": "Official Site",
+        "btn_link": "https://tether.to/"
+    },
+    "footer": {
+        "text": "BountyEarn helps members earn Tether USDT rewards by completing GPT offers, watching videos, viewing ads, and claiming from the faucet."
+    }
+}

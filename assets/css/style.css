@@ -1,0 +1,648 @@
+:root {
+    --ow-bg: #0b0c0e;
+    --ow-card: #101114;
+    --ow-raised: #18181b;
+    --ow-border: #27272a;
+    --ow-text: #f4f4f5;
+    --ow-text-muted: #a1a1aa;
+    --ow-text-dim: #71717a;
+    --ow-primary: #34d399;
+    --ow-primary-hover: #6ee7b7;
+    --ow-primary-deep: #10b981;
+    --ow-on-primary: #0b0c0e;
+    --ow-danger: #ff6568;
+    --ow-radius: 0.625rem;
+    --ow-font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --ow-font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ---------- Base ---------- */
+html {
+    color-scheme: dark;
+}
+
+body {
+    font-family: var(--ow-font-sans);
+    background-color: var(--ow-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: rgba(52, 211, 153, 0.25);
+    color: #f4f4f5;
+}
+
+input,
+textarea,
+select {
+    color-scheme: dark;
+}
+
+/* ---------- Custom scrollbars (page & tables) ---------- */
+.table-scroll::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 4px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ---------- Layout ---------- */
+.container-custom {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* ---------- Ambient background (replaces particles) ---------- */
+.ambient-bg {
+    z-index: -1;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
+
+.ambient-blob {
+    will-change: transform;
+    border-radius: 9999px;
+    position: absolute;
+}
+
+.ambient-blob-a {
+    opacity: 0.16;
+    background: radial-gradient(closest-side, #10b981 0%, #0000 70%);
+    width: 58vw;
+    height: 58vw;
+    top: -22vw;
+    left: -14vw;
+    animation: 46s ease-in-out infinite alternate ambient-drift-a;
+}
+
+.ambient-blob-b {
+    opacity: 0.13;
+    background: radial-gradient(closest-side, #0d9488 0%, #0000 70%);
+    width: 48vw;
+    height: 48vw;
+    bottom: -24vw;
+    right: -12vw;
+    animation: 58s ease-in-out infinite alternate ambient-drift-b;
+}
+
+.ambient-blob-c {
+    opacity: 0.08;
+    background: radial-gradient(closest-side, #34d399 0%, #0000 70%);
+    width: 34vw;
+    height: 34vw;
+    top: 42%;
+    left: 52%;
+    animation: 72s ease-in-out infinite alternate ambient-drift-c;
+}
+
+.ambient-grid {
+    background-image:
+        linear-gradient(90deg, #ffffff06 1px, #0000 1px),
+        linear-gradient(#ffffff06 1px, #0000 1px);
+    background-size: 44px 44px;
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: radial-gradient(90% 65% at 50% 0, #000 25%, #0000 78%);
+    mask-image: radial-gradient(90% 65% at 50% 0, #000 25%, #0000 78%);
+}
+
+@keyframes ambient-drift-a {
+    0% { transform: translate(-3%, -2%) scale(1); }
+    to { transform: translate(7%, 9%) scale(1.18); }
+}
+
+@keyframes ambient-drift-b {
+    0% { transform: translate(0) scale(1.1); }
+    to { transform: translate(-9%, -7%) scale(0.94); }
+}
+
+@keyframes ambient-drift-c {
+    0% { transform: translateY(7%) scale(0.9); }
+    to { transform: translate(-7%, -9%) scale(1.16); }
+}
+
+/* ---------- Micro animations ---------- */
+.micro-anim {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.micro-anim:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.12);
+}
+
+@keyframes flip-logo {
+    0%, 85% { transform: rotateY(0deg); }
+    92.5% { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.logo-flip {
+    animation: flip-logo 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* ---------- Nav icon chips (header dropdowns + mobile slide-out menu) ---------- */
+.nav-ico-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.375rem;
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    color: #34d399;
+    font-size: 0.6875rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover > .nav-ico-chip,
+.group:hover .nav-ico-chip {
+    background: rgba(52, 211, 153, 0.18);
+    border-color: rgba(52, 211, 153, 0.35);
+    box-shadow: 0 0 14px -4px rgba(52, 211, 153, 0.45);
+}
+
+#mobile-menu .nav-ico-chip {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.8125rem;
+}
+
+/* ---------- Signature section label (mono, uppercase, emerald) ---------- */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--ow-font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ow-primary);
+}
+
+.section-label::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: rgba(52, 211, 153, 0.4);
+}
+
+.text-gradient-primary {
+    background: linear-gradient(90deg, #34d399 0%, #6ee7b7 50%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ---------- Global toast system ---------- */
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+.toast-container {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .toast-container {
+        top: 5rem;
+        left: 1rem;
+        right: 1rem;
+    }
+}
+
+.toast {
+    background: var(--ow-card);
+    border: 1px solid var(--ow-border);
+    border-left: 4px solid var(--ow-primary);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    pointer-events: auto;
+    position: relative;
+    overflow: hidden;
+    max-width: 24rem;
+    width: 100%;
+    margin-left: auto;
+}
+
+.toast.toast-error {
+    border-left-color: var(--ow-danger);
+}
+
+.toast.toast-success i {
+    color: var(--ow-primary);
+    animation: tada 1s ease-in-out;
+}
+
+.toast.toast-error i {
+    color: var(--ow-danger);
+}
+
+.toast.hiding {
+    animation: slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--ow-primary);
+    animation: toastProgress 3s linear forwards;
+}
+
+.toast.toast-error .toast-progress {
+    background: var(--ow-danger);
+}
+
+@keyframes toastProgress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* ---------- Wheel of fortune ---------- */
+.wheel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+.game-container {
+    position: relative;
+    width: 90vw;
+    height: 90vw;
+    max-width: 400px;
+    max-height: 400px;
+    z-index: 5;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+#wheelCanvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 60px -20px rgba(16, 185, 129, 0.3);
+    pointer-events: none;
+}
+
+.pointer-container {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 40px;
+    height: 50px;
+    z-index: 20;
+    transform: translateX(-50%);
+    transform-origin: top center;
+    pointer-events: none;
+    transition: transform 0.1s;
+}
+
+.pointer {
+    width: 100%;
+    height: 100%;
+    background: var(--ow-primary);
+    clip-path: polygon(15% 0%, 85% 0%, 50% 100%);
+    border-top: 5px solid var(--ow-primary-deep);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.spin-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #18181b, #0b0c0e);
+    border: 4px solid var(--ow-border);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 30;
+    font-weight: 800;
+    color: var(--ow-primary);
+    font-size: 1.1rem;
+    transition: transform 0.1s;
+}
+
+.spin-btn:hover:not(:disabled) {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.spin-btn:disabled {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.floating-text {
+    position: absolute;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--ow-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    animation: floatUp 1.5s forwards;
+    z-index: 40;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-80px) scale(1.5); opacity: 0; }
+}
+
+@keyframes shake-hard {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(3px, 3px) rotate(-1deg); }
+    50% { transform: translate(0, 0) rotate(1deg); }
+    75% { transform: translate(-3px, 3px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.shake-active {
+    animation: shake-hard 0.5s ease-in-out;
+}
+
+/* ---------- Modal (wheel / rewards) ---------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--ow-card);
+    border: 1px solid var(--ow-border);
+    padding: 30px;
+    border-radius: var(--ow-radius);
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    width: 90%;
+    max-width: 320px;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.modal-content h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--ow-text);
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 15px 0;
+    color: var(--ow-primary);
+}
+
+.claim-again-btn {
+    background: var(--ow-primary);
+    color: var(--ow-on-primary);
+    border: none;
+    border-radius: var(--ow-radius);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.claim-again-btn:hover {
+    background: var(--ow-primary-hover);
+}
+
+/* ---------- Floating ad widget ---------- */
+.floating-ad-wrapper {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 9999;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    border-radius: 0.375rem;
+    overflow: hidden;
+    width: max-content;
+    height: max-content;
+    line-height: 1;
+    display: flex;
+    border: 1px solid var(--ow-border);
+    background: var(--ow-card);
+}
+
+/* ---------- Documentation (standalone page) ---------- */
+.doc-body {
+    font-family: var(--ow-font-sans);
+    background-color: var(--ow-bg);
+    color: var(--ow-text-muted);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.doc-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: var(--ow-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--ow-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.doc-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ow-border);
+}
+
+.doc-header h1 {
+    color: var(--ow-primary);
+    font-size: 2rem;
+    margin: 0 0 8px;
+}
+
+.doc-header p {
+    color: var(--ow-text-muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.doc-container h2 {
+    color: var(--ow-text);
+    font-size: 1.35rem;
+    margin: 32px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ow-border);
+}
+
+.doc-container h3 {
+    color: var(--ow-text);
+    font-size: 1.1rem;
+    margin: 24px 0 8px;
+}
+
+.doc-container p {
+    font-size: 0.95rem;
+    margin: 0 0 14px;
+}
+
+.doc-container a {
+    color: var(--ow-primary);
+    text-decoration: none;
+}
+
+.doc-container a:hover {
+    text-decoration: underline;
+}
+
+.doc-container code,
+.doc-inline-code {
+    font-family: var(--ow-font-mono);
+    background: var(--ow-raised);
+    border: 1px solid var(--ow-border);
+    color: var(--ow-primary);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 0.86em;
+}
+
+.doc-container pre {
+    background: var(--ow-raised);
+    border: 1px solid var(--ow-border);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.doc-container pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--ow-text-muted);
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.doc-note {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-left: 4px solid var(--ow-primary);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+.doc-warning {
+    background: rgba(255, 101, 104, 0.07);
+    border: 1px solid rgba(255, 101, 104, 0.25);
+    border-left: 4px solid var(--ow-danger);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+.doc-list {
+    padding-left: 22px;
+    margin: 0 0 14px;
+}
+
+.doc-list li {
+    margin-bottom: 6px;
+}
+
+.doc-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ow-border);
+    font-size: 0.85rem;
+    color: var(--ow-text-dim);
+}

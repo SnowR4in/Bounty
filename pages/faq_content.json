@@ -1,0 +1,26 @@
+[
+    {
+        "question": "How do I log in or create an account?",
+        "answer": "Log in with your email and pick a password (at least 6 characters). If the email is new, submitting the form automatically creates your BountyEarn account - no separate sign-up step needed."
+    },
+    {
+        "question": "What is BountyEarn?",
+        "answer": "BountyEarn is a GPT (Get-Paid-To) earnings site. Complete offers, tasks, PTC ads, videos and shortlinks to earn USDT rewards. Withdrawals are sent to the email on your account once you reach the minimum payout."
+    },
+    {
+        "question": "What is USDT?",
+        "answer": "Tether (USDT) is a stablecoin pegged 1-to-1 to the US dollar, so 1 USDT is always worth about 1 USD. Your balance never loses value from market swings - what you earn is what you keep."
+    },
+    {
+        "question": "How do I withdraw my earnings?",
+        "answer": "Go to the Withdraw page in your dashboard, enter an amount above the minimum withdrawal and confirm. The USDT is sent instantly to the payout email on your BountyEarn account."
+    },
+    {
+        "question": "How can I earn more?",
+        "answer": "Complete GPT offers, PTC ads, watch videos, solve shortlinks, finish tasks, claim the faucet regularly, spin the wheel of fortune, claim your daily bonus and invite friends with your referral link to earn a percentage of their earnings."
+    },
+    {
+        "question": "Why was my payout blocked or my account flagged?",
+        "answer": "Payouts are blocked when fraud is suspected: VPN or proxy usage, bot activity, multiple accounts from the same device or IP. Use your real IP address, keep one account per person and device, and make sure your payout email is valid."
+    }
+]

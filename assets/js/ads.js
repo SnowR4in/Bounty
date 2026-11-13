@@ -1,0 +1,1 @@
+(function(){const w=window;w['c\x61n\x52\x75n\x41\x64\x73']=!0;w['h\x61s\x41\x64\x73']=!0;})();
